@@ -13,7 +13,7 @@ const sampleArtifacts = [
     },
     description: {
       en: 'An ancient data storage device from the Allagan Empire, containing knowledge of magical arts and poetry.',
-      de: 'Ein antikes Datenspeichergerät aus dem Allagischen Imperium, das Wissen über magische Künste und Poesie enthält.'
+      de: 'Ein antisches Datenspeichergerät aus dem Allagischen Imperium, das Wissen über magische Künste und Poesie enthält.'
     },
     image: '/assets/artifacts/tomestone.jpg',
     model: '/assets/models/tomestone.glb',

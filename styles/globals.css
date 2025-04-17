@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,18 +14,11 @@
   --color-eorzea-accent: #9e7eb9;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Nunito', sans-serif;
   background-color: var(--color-eorzea-dark);
   color: var(--color-eorzea-light);
-  line-height: 1.6;
-  background-image: url('/assets/bg-texture.png');
+  background-image: url('/bg-texture.png');
   background-repeat: repeat;
   background-size: 200px;
 }
@@ -33,77 +26,24 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cinzel', serif;
   color: var(--color-eorzea-gold);
-  margin-bottom: 1rem;
 }
 
-.nav-link {
-  position: relative;
-  color: var(--color-eorzea-light);
-  transition: color 0.3s ease;
-  font-family: 'Cinzel', serif;
-}
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-cinzel border-2 transition;
+  }
 
-.nav-link:hover {
-  color: var(--color-eorzea-gold);
-}
+  .btn-primary {
+    @apply bg-eorzea-gold text-eorzea-dark border-eorzea-gold hover:bg-transparent hover:text-eorzea-gold;
+  }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-eorzea-gold);
-  transition: width 0.3s ease;
-}
+  .btn-secondary {
+    @apply bg-transparent text-eorzea-gold border-eorzea-gold hover:bg-eorzea-gold/10;
+  }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-align: center;
-}
-
-.btn-primary {
-  background-color: var(--color-eorzea-gold);
-  color: var(--color-eorzea-darker);
-  border: 2px solid var(--color-eorzea-gold);
-}
-
-.btn-primary:hover {
-  background-color: transparent;
-  color: var(--color-eorzea-gold);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--color-eorzea-gold);
-  border: 2px solid var(--color-eorzea-gold);
-}
-
-.btn-secondary {
-  @apply bg-transparent border border-eorzea-gold text-eorzea-gold hover:bg-eorzea-gold/10;
-}
-
-.section {
-  @apply py-16 md:py-24;
-}
-
-.container {
-  @apply px-4 mx-auto max-w-7xl;
-}
-
-.card {
-  @apply bg-eorzea-darker/80 backdrop-blur-sm border border-eorzea-gold/20 rounded-lg overflow-hidden transition-all duration-300 hover:border-eorzea-gold/50 hover:shadow-glow;
+  .glass-card {
+    @apply bg-eorzea-darker/80 backdrop-blur border border-eorzea-gold/20 rounded-lg shadow-glow transition;
+  }
 }
 
 .shadow-glow {
@@ -111,20 +51,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .magical-text {
-  @apply relative inline-block;
-  text-shadow: 0 0 5px rgba(201, 166, 107, 0.7);
+  text-shadow: 0 0 10px #c9a66b88, 0 0 20px #2a5c4544;
+  animation: glow 3s infinite alternate;
 }
 
-.magical-text::after {
-  content: '';
-  @apply absolute inset-0 bg-gradient-to-r from-eorzea-gold/0 via-eorzea-gold/30 to-eorzea-gold/0 opacity-0 transition-opacity duration-1000;
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { opacity: 0; transform: translateX(-100%); }
-  50% { opacity: 0.5; }
-  100% { opacity: 0; transform: translateX(100%); }
+@keyframes glow {
+  0% { text-shadow: 0 0 10px #c9a66b88; }
+  100% { text-shadow: 0 0 20px #c9a66bcc, 0 0 30px #2a5c4544; }
 }
 
 .floating {
@@ -135,12 +68,4 @@ h1, h2, h3, h4, h5, h6 {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
-}
-
-.parallax-bg {
-  @apply relative overflow-hidden;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
